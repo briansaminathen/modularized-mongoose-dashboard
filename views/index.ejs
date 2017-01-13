@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<title></title>
+	<style type="text/css">
+
+	form {
+		margin: 0 auto;
+		margin-top: 50px;
+		width: 500px;
+	}
+	.form-group {
+		width: 300px;
+		margin: 20px auto;
+	}
+	.add {
+		margin-left: 80px;
+		margin-right: 55px;
+	}
+
+	.skip {
+		margin-left: 600px;
+		margin-top: -137px;
+	}
+
+	</style>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	</script>
+</head>
+<body>
+
+	<% if(typeof(errors) != 'undefined') { %>
+	 	<% for (var x in errors) { %>
+	 	<h3><%= errors[x].message %></h3>
+	 	<% } %>
+	<% } %> 
+	
+	<h1>Your animals are listed below</h1>
+	<% for (var x in animals) { %>
+		<ul>
+			<li><a href="/bear/<%= animals[x]._id %>">Name: <%= animals[x].name %></a></li>
+			<li>Legs: <%= animals[x].legs %></li>
+		</ul>
+
+	<form action="/bear/<%= animals[x]._id %>/destroy" method="post">
+			<input type="submit" value="Delete" class="btn btn-primary">
+	</form>
+	<% } %>
+
+	
+	<a href="/bear/new" class="btn btn-primary">Add an Animal</a>
+
+	
+		
+
+</body>	
+</html>
